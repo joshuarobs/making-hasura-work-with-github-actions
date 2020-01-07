@@ -22,11 +22,11 @@ jobs:
     - name: Start up the Docker containers and migrate to the latest version of the database
       run: |
         ./docker-run.sh
+        sleep 4
         docker ps
         echo "-- start"
-        docker logs
+        docker logs myserver
         echo "-- end"
-        sleep 4
         cd docker
         hasura migrate status --skip-update-check --endpoint http://localhost:8080
     - name: Use Node.js ${{ matrix.node-version }}
