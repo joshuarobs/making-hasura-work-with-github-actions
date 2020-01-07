@@ -10,7 +10,7 @@ There is also another project trying to do the same thing, but it uses `docker-c
 https://github.com/joshuarobs/making-hasura-work-with-github-actions
 
 ## Other notes
-At some point I also tried to run `docker exec myserver psql -U admin -d my-db -a -f START.sql` in the workflow. This is because this page (https://docs.hasura.io/1.0/graphql/manual/deployment/docker/index.html) says:
+At some point I also tried to run `docker exec myserver psql -U admin -d my-db -a -f START.sql` in the workflow (`nodejs.yml`). This is because this page (https://docs.hasura.io/1.0/graphql/manual/deployment/docker/index.html) says:
 
 `Hasura GraphQL engine needs access permissions to your Postgres database as described in Postgres permissions`
 
