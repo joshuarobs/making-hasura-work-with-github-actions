@@ -28,6 +28,7 @@ jobs:
         docker logs myserver
         echo "-- end"
         cd docker
+        docker exec myserver psql <<EOF \x SELECT * FROM foo; EOF
         docker exec myserver psql -U admin -d my-db -a -f START.sql
         hasura migrate status --skip-update-check --endpoint http://localhost:8080
     - name: Use Node.js ${{ matrix.node-version }}
