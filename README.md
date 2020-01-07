@@ -1,5 +1,5 @@
 # making-hasura-work-with-github-actions
-Trying to make Hasura work with GitHub Actions
+## Trying to make Hasura work with GitHub Actions
 
 This one uses instructions for setup from here:
 https://docs.hasura.io/1.0/graphql/manual/deployment/docker/index.html
