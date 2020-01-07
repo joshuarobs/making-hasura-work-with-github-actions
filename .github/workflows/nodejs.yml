@@ -24,7 +24,7 @@ jobs:
         ./docker-run.sh
         docker ps
         echo "-- start"
-        docker logs myserver
+        docker logs
         echo "-- end"
         sleep 4
         cd docker
