@@ -1,2 +1,2 @@
-# test-ci
-Testing Hasura and PostgreSQL with GitHub Actions
+# making-hasura-work-with-github-actions
+Making Hasura work with GitHub Actions
