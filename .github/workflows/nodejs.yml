@@ -22,7 +22,7 @@ jobs:
     - name: Start up the Docker containers and migrate to the latest version of the database
       run: |
         ./docker-run.sh
-        sleep 4
+        sleep 5
         docker ps
         echo "-- start"
         docker logs myserver
