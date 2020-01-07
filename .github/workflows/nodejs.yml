@@ -23,7 +23,9 @@ jobs:
       run: |
         ./docker-run.sh
         docker ps
+        echo "-- start"
         docker logs myserver
+        echo "-- end"
         sleep 4
         cd docker
         hasura migrate status --skip-update-check --endpoint http://localhost:8080
