@@ -4,8 +4,20 @@ on: [push]
 
 jobs:
   build:
+    runs-on: ubuntu-latest
 
-    runs-on: ubuntu-16.04
+    services:
+      postgres:
+        image: postgres:12.1
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+        # will assign a random free host port
+        - 5432/tcp
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     strategy:
       matrix:
@@ -15,10 +27,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install Hasura cli
       run: curl -L https://github.com/hasura/graphql-engine/raw/master/cli/get.sh | bash
-    - name: Add postgres
-      uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '12'  # See https://hub.docker.com/_/postgres for available versions
     - name: Start up the Docker containers and migrate to the latest version of the database
       run: |
         ./docker-run.sh
