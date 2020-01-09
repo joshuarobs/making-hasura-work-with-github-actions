@@ -22,6 +22,8 @@ jobs:
         env:
           HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:@postgres:5432/postgres
           HASURA_GRAPHQL_ACCESS_KEY: verysecretaccesskey
+        ports:
+          - 8080:8080
 
     strategy:
       matrix:
