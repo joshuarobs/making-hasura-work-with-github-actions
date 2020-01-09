@@ -11,7 +11,6 @@ jobs:
         image: postgres:12.1
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
         ports:
         # will assign a random free host port
@@ -21,7 +20,7 @@ jobs:
       hasura:
         image: hasura/graphql-engine:latest
         env:
-          HASURA_GRAPHQL_DATABASE_URL: postgres://gql_test:@postgres:5432/gql_test
+          HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:@postgres:5432/postgres
           HASURA_GRAPHQL_ACCESS_KEY: verysecretaccesskey
 
     strategy:
@@ -37,7 +36,7 @@ jobs:
         sleep 5
         docker ps
         cd docker
-        hasura migrate status --skip-update-check --endpoint http://localhost:8080
+        hasura migrate status --skip-update-check --endpoint http://localhost:8080/v1/graphql
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
