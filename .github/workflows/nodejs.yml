@@ -34,7 +34,6 @@ jobs:
       run: curl -L https://github.com/hasura/graphql-engine/raw/master/cli/get.sh | bash
     - name: Start up the Docker containers and migrate to the latest version of the database
       run: |
-        ./docker-run.sh
         sleep 5
         docker ps
         echo "-- start"
