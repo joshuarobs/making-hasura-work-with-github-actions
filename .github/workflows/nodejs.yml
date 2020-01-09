@@ -18,6 +18,11 @@ jobs:
         - 5432/tcp
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      hasura:
+        image: hasura/graphql-engine:latest
+        env:
+          HASURA_GRAPHQL_DATABASE_URL: postgres://gql_test:@postgres:5432/gql_test
+          HASURA_GRAPHQL_ACCESS_KEY: verysecretaccesskey
 
     strategy:
       matrix:
